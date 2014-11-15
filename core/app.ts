@@ -1,10 +1,13 @@
 /// <reference path='../lib/handlebars.d.ts'/>
 /// <reference path='../lib/qwest.d.ts'/>
 
-var source, template;
+declare var Templates : any;
+declare var Views : any;
+
+//var source, template;
 
 window.addEventListener('load', () => {
-    document.body.innerHTML = hbs.home({title: "Matt's Web App", body: "YAY it works!, kinda"});
+    document.body.innerHTML = Views.home({title: "Matt's Web App", body: "YAY it works!, kinda"});
     console.log("YAY");
     //qwest.get('views/home.hbs', {}, {responseType: ''})
     //    .then((response) => {
