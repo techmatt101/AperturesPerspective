@@ -5,10 +5,10 @@ interface Qwest {
     before(action : () => void) : Qwest
     limit(limit : number) : Qwest
 
-    get (url : string, data : string, options? : typeof Object) : QwestMethod
-    post (url : string, data : typeof Object, options? : typeof Object) : QwestMethod
-    put (url : string, data : typeof Object, options? : typeof Object) : QwestMethod
-    delete (url : string, data : string, options? : typeof Object) : QwestMethod
+    get (url : string, data, options?) : QwestMethod
+    post (url : string, data, options?) : QwestMethod
+    put (url : string, data, options?) : QwestMethod
+    delete (url : string, data, options?) : QwestMethod
 }
 
 interface QwestMethod {
