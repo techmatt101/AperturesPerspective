@@ -1,0 +1,17 @@
+{
+  "name": "AperturesPerspective-API",
+  "version": "0.1.0",
+  "homepage": "https://github.com/techmatt101/AperturesPerspective.git",
+  "authors": [
+    "techmatt101"
+  ],
+  "description": "AperturesPerspective FYP",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "handlebars": "~2.0.0"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "AperturesPerspective-API",
+  "version": "0.1.0",
+  "description": "AperturesPerspective FYP",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/techmatt101/AperturesPerspective.git"
+  },
+  "author": "techmatt101",
+  "bugs": {
+    "url": "https://github.com/techmatt101/AperturesPerspective/issues"
+  },
+  "homepage": "https://github.com/techmatt101/AperturesPerspective",
+  "dependencies": {
+    "bower": "~1.3.10",
+    "gulp": "~3.8.8",
+    "gulp-typescript": "~2.3.0",
+    "gulp-less": "~1.3.6",
+    "gulp-sourcemaps": "~1.2.8"
+  }
+}
