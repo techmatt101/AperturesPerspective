@@ -1,4 +1,5 @@
 /// <reference path='lib/handlebars.d.ts'/>
+/// <reference path='lib/qwest.d.ts'/>
 
 window.addEventListener('load', () => {
     var source = document.getElementById('foo').innerHTML;
