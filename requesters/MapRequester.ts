@@ -1,6 +1,6 @@
 /// <reference path='../lib/JSONP.d.ts'/>
 
-class PanoramioPhotoLocationRequester implements IRequester {
+class MapRequester implements IRequester {
 
     constructor (public latitude : number,
                  public longitude : number,
