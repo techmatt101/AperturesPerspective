@@ -1,13 +1,20 @@
-<section>
-    {{#if image}}
-        <img src="{{image}}" alt="{{image_alt}}">
-    {{/if}}
-    <h2>{{title}}</h2>
-    {{#if text}}
-        <p>{{text}}</p>
-    {{/if}}
-    <small>{{info}}</small>
-    {{#if tag}}
-        <small>#{{tag}}</small>
-    {{/if}}
+<section class="card">
+    <header>
+        {{#if image}}
+            <div class="card__image-container">
+                <img class="card__image" src="{{image}}" alt="{{image_alt}}">
+            </div>
+        {{/if}}
+    </header>
+
+    <footer>
+        <h2>{{title}}</h2>
+        {{#if text}}
+            <p>{{text}}</p>
+        {{/if}}
+        <small>{{info}}</small>
+        {{#if tag}}
+            <small>#{{tag}}</small>
+        {{/if}}
+    </footer>
 </section>

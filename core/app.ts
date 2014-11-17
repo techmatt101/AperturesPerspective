@@ -15,7 +15,7 @@ interface ITemplates {
 //var source, template;
 
 window.addEventListener('load', () => {
-    document.body.innerHTML = Views.home({title: "Matt's Web App"});
+    document.body.innerHTML = Views.home({title: "Matt's Web App", body: 'YAY'});
 
     //document.getElementsByClassName('body')[0].innerHTML = Templates.card({title: 'YAY it works', info: 'kinda'});
 

@@ -25,7 +25,7 @@ class InspirationController {
                     cardsMarkup += Templates.card(cards[i]);
                 }
 
-                document.body.innerHTML = cardsMarkup;
+                document.getElementById('feed').innerHTML = cardsMarkup;
             })
                 .addAsync(function PhotoTips(callback) {
                     self.loadPhotoTips(callback);
