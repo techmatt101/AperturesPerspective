@@ -3,6 +3,8 @@ declare var Templates : ITemplates;
 
 interface IViews {
     inspiration : (content) => string
+    shootPlan : (content) => string
+    shootPlanner : (content) => string
 }
 
 interface ITemplates {
