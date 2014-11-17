@@ -1,5 +1,3 @@
-/// <reference path='../lib/JSONP.d.ts'/>
-
 class RSSFeedRequester implements IRequester {
     public feedUrl = '';
     public numberOfResults = 10;

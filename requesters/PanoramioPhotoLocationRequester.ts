@@ -1,5 +1,3 @@
-/// <reference path='../lib/JSONP.d.ts'/>
-
 enum PanoramioPhotoLocationImageSize {
     ORIGINAL, MEDIUM, SMALL, THUMBNAIL, SQUARE, MINI_SQUARE
 }

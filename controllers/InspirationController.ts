@@ -1,6 +1,3 @@
-/// <reference path='../helpers/commonHelper'/>
-/// <reference path='../helpers/locationHelper'/>
-
 class InspirationController {
 
     static PINNED_CARDS_ID = 'pinnedCards';
@@ -17,6 +14,8 @@ class InspirationController {
 
     constructor () {
         var self = this;
+
+        document.body.innerHTML = Views.inspiration({title: "Matt's Web App"});
 
         this.fetchPinnedCards();
 

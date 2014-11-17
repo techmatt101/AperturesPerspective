@@ -1,5 +1,3 @@
-/// <reference path='commonHelper'/>
-
 function getLocationCoordinates(callback : (latitude : number, longitude : number) => void) { //TODO: handle no location
     navigator.geolocation.getCurrentPosition(function(position) {
         callback(position.coords.latitude, position.coords.longitude);

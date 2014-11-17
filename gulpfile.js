@@ -27,23 +27,11 @@ gulp.task('scripts', function () {
         .pipe(gulp.dest('build/js'));
 });
 
-gulp.task('template-markup', function () {
-    return buildTemplates(gulp.src('templates/*/*.hbs'), 'Templates')
+gulp.task('templates', function () {
+    return buildTemplates(gulp.src('templates/*.hbs'), 'Templates')
         .pipe(concat('templates.js'))
         .pipe(gulp.dest('build'));
 });
-
-//gulp.task('template-styles', function () {
-//    return buildStyles(gulp.src('templates/*/style.less'))
-//        .pipe(concat('templates.css'))
-//        .pipe(gulp.dest('build/css'));
-//});
-//
-//gulp.task('template-scripts', function () {
-//    return buildScripts(gulp.src('templates/*/script.ts'))
-//        .pipe(concat('templates.js'))
-//        .pipe(gulp.dest('build/js'));
-//});
 
 function buildTemplates(task, namespace) {
     return task
