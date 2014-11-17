@@ -14,12 +14,14 @@ interface ITemplates {
 
 //var source, template;
 
+var controller;
+
 window.addEventListener('load', () => {
+
     document.body.innerHTML = Views.home({title: "Matt's Web App", body: 'YAY'});
+    controller = new InspirationController();
 
     //document.getElementsByClassName('body')[0].innerHTML = Templates.card({title: 'YAY it works', info: 'kinda'});
-
-    console.log("YAY");
 
     //var url = 'http://feedproxy.google.com/DigitalPhotographySchool';
 

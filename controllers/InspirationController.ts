@@ -3,9 +3,12 @@
 
 class InspirationController {
 
+    static PINNED_CARDS_ID = 'pinnedCards';
+
     private _tipsCards : ICard[]= [];
     private _locationCards : ICard[] = [];
     private _photoCards : ICard[] = [];
+    private _pinnedCards : ICard[] = [];
 
     private _photoLocationRequester = new PanoramioPhotoLocationRequester();
     private _photoRequester = new FlickrPhotoRequester();
@@ -14,6 +17,15 @@ class InspirationController {
 
     constructor () {
         var self = this;
+
+        this.fetchPinnedCards();
+
+        var cardsMarkup = '';
+        for (var i = 0; i < this._pinnedCards.length; i++) {
+            cardsMarkup += Templates.card(this._pinnedCards[i]);
+        }
+
+        document.getElementById('pinned').innerHTML = cardsMarkup;
 
         getLocationCoordinates((latitude, longitude) => {
             new TaskCollection('Feed Loader', () => {
@@ -38,6 +50,15 @@ class InspirationController {
                 //})
                 .run();
         });
+    }
+
+    fetchPinnedCards() {
+        this._pinnedCards = JSON.parse(localStorage.getItem(InspirationController.PINNED_CARDS_ID)) || [];
+    }
+
+    pinCard(card : ICard) {
+        this._pinnedCards.push(card);
+        localStorage.setItem(InspirationController.PINNED_CARDS_ID, JSON.stringify(this._pinnedCards));
     }
 
     loadLocations (latitude, longitude, callback) {
