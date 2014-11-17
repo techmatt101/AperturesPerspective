@@ -1,3 +1,3 @@
 interface IRequester {
-    request()
+    request(callback)
 }

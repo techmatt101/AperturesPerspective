@@ -9,7 +9,7 @@ var concat = require('gulp-concat');
 
 gulp.task('default', ['views', 'templates', 'styles', 'scripts']);
 gulp.task('dev', ['scripts', 'styles', 'views', 'templates']);
-gulp.task('templates', ['template-markup', 'template-styles', 'template-scripts']);
+gulp.task('templates', ['template-markup']);
 
 gulp.task('views', function () {
     return buildTemplates(gulp.src('views/*.hbs'), 'Views')
@@ -23,27 +23,27 @@ gulp.task('styles', function () {
 });
 
 gulp.task('scripts', function () {
-    return buildScripts(gulp.src('core/*.ts'))
+    return buildScripts(gulp.src('*/*.ts'))
         .pipe(gulp.dest('build/js'));
 });
 
 gulp.task('template-markup', function () {
-    return buildTemplates(gulp.src('templates/*/template.hbs'), 'Templates')
+    return buildTemplates(gulp.src('templates/*/*.hbs'), 'Templates')
         .pipe(concat('templates.js'))
         .pipe(gulp.dest('build'));
 });
 
-gulp.task('template-styles', function () {
-    return buildStyles(gulp.src('templates/*/style.less'))
-        .pipe(concat('templates.css'))
-        .pipe(gulp.dest('build/css'));
-});
-
-gulp.task('template-scripts', function () {
-    return buildScripts(gulp.src('templates/*/script.ts'))
-        .pipe(concat('templates.js'))
-        .pipe(gulp.dest('build/js'));
-});
+//gulp.task('template-styles', function () {
+//    return buildStyles(gulp.src('templates/*/style.less'))
+//        .pipe(concat('templates.css'))
+//        .pipe(gulp.dest('build/css'));
+//});
+//
+//gulp.task('template-scripts', function () {
+//    return buildScripts(gulp.src('templates/*/script.ts'))
+//        .pipe(concat('templates.js'))
+//        .pipe(gulp.dest('build/js'));
+//});
 
 function buildTemplates(task, namespace) {
     return task
@@ -64,12 +64,13 @@ function buildStyles(task) {
 
 function buildScripts(task) {
     var tsResult = task
-        .pipe(sourcemaps.init())
+        //.pipe(sourcemaps.init())
         .pipe(ts({
-            sortOutput: true,
+            sortOutput: false,
             target: 'ES5'
         }));
 
     return tsResult.js
-        .pipe(sourcemaps.write());
+        .pipe(concat('app.js'));
+    //.pipe(sourcemaps.write());
 }

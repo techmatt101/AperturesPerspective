@@ -5,22 +5,18 @@ enum PanoramioPhotoLocationImageSize {
 }
 
 class PanoramioPhotoLocationRequester implements IRequester {
+    public latitude = 0;
+    public longitude = 0;
+    public startFrom = 0;
+    public numberOf = 5;
+    public imageSize : PanoramioPhotoLocationImageSize = PanoramioPhotoLocationImageSize.MEDIUM;
+    public radius = 0.01;
 
-    constructor (public latitude : number,
-                 public longitude : number,
-                 public startFrom = 0,
-                 public numberOf = 5,
-                 public imageSize : PanoramioPhotoLocationImageSize = PanoramioPhotoLocationImageSize.MEDIUM,
-                 public radius = 0.01) {
-        if (startFrom > 100) {
-            console.error('API does not support from greater than 100');
-        }
-    }
 
-    request () {
+    request (callback) {
         var options = {
             set: 'public', // public (popular photos), full (all photos), user ID number
-            size: PanoramioPhotoLocationImageSize[this.imageSize],
+            size: PanoramioPhotoLocationImageSize[this.imageSize].toLowerCase(),
             from: this.startFrom, // max of 100
             to: this.startFrom + this.numberOf,
             minx: this.longitude - this.radius,
@@ -30,8 +26,6 @@ class PanoramioPhotoLocationRequester implements IRequester {
             mapfilter: true // filter out photos of the same location
         };
 
-        JSONP.get('http://www.panoramio.com/map/get_panoramas.php', options, (response) => {
-            console.log(response);
-        });
+        JSONP.get('http://www.panoramio.com/map/get_panoramas.php', options, callback);
     }
 }
