@@ -44,9 +44,9 @@ class InspirationController {
                 .addAsync(function PhotoLocations(callback) {
                     self.loadLocations(latitude, longitude, callback);
                 })
-                //.addAsync(function Photos(callback) {
-                //    self.loadPhotos(latitude, longitude, callback);
-                //})
+                .addAsync(function Photos(callback) {
+                    self.loadPhotos(callback);
+                })
                 .run();
         });
     }
@@ -70,9 +70,7 @@ class InspirationController {
         });
     }
 
-    loadPhotos (latitude, longitude, callback) {
-        this._photoRequester.latitude = latitude;
-        this._photoRequester.longitude = longitude;
+    loadPhotos (callback) {
         this._photoRequester.request((response) => {
             console.log(response);
             this._photoCards = PhotoInspirationCardMapper.map(response);

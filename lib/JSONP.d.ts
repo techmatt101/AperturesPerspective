@@ -1,5 +1,5 @@
 declare var JSONP : IJSONP;
 
 interface IJSONP {
-    get (url : string, data?, callback? : (response) => void)
+    get (url : string, data?, callback? : (response) => void, overrideCallbackName? : string)
 }
