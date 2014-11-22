@@ -1,11 +1,19 @@
 <div class="entry">
-    <h1>{{title}}</h1>
-
     <header>
         <nav>
-            <i class="md-menu"></i> <span class="flex">Inspiration</span> <i class="md-refresh"></i>
+            <button id="menu" class="menu icon md-menu"></button> <h1>{{title}}</h1> <button class="actions icon md-refresh"></button>
         </nav>
     </header>
+
+    <aside id="drawer">
+        <nav>
+            <ul>
+                <li><a href=""><i class="md-landscape"></i> Inspiration</a></li>
+                <li><a href=""><i class="md-event"></i> Shoot Planner</a></li>
+                <li><a href=""><i class="md-settings"></i> Settings</a></li>
+            </ul>
+        </nav>
+    </aside>
 
     <div class="body">
         <h1>Pinned</h1>

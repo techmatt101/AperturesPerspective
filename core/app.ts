@@ -15,5 +15,11 @@ var controller;
 
 window.addEventListener('load', () => {
     controller = new InspirationController();
+
+    var drawer = document.getElementById('drawer');
+
+    document.getElementById('menu').addEventListener('click', () => {
+        drawer.setAttribute('open', 'true');
+    });
 });
 

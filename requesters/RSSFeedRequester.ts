@@ -1,6 +1,6 @@
 class RSSFeedRequester implements IRequester {
     public feedUrl = '';
-    public numberOfResults = 10;
+    public numberOfResults = 5;
 
 
     request (callback) {

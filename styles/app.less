@@ -1,102 +1,33 @@
 @import 'common/material-design-iconic-font';
+@import 'common/card';
+@import 'common/nav';
+@import 'common/spinner';
 
 body {
     font-family: 'Open Sans', sans-serif;
-    background: #444;
+    background: #eee;
 }
 
-.flex {
-    -ms-flex: 1 1 0.000000001px;
-    -webkit-flex: 1;
-    flex: 1;
-    -webkit-flex-basis: 0.000000001px;
-    flex-basis: 0.000000001px;
+* {
+    outline: none;
 }
 
-.card {
-    background: #fff;
-    border-radius: 3px;
-    overflow: hidden;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-    width:400px;
-    margin-bottom: 20px;
+//.flex {
+//    -ms-flex: 1 1 0.000000001px;
+//    -webkit-flex: 1;
+//    flex: 1;
+//    -webkit-flex-basis: 0.000000001px;
+//    flex-basis: 0.000000001px;
+//}
 
-    .card__image-container {
-        height:200px;
-        overflow: hidden;
-        background: #eee;
-    }
 
-    .card__image {
-        width: 100%;
-    }
-
-    .card__tag {
-
-    }
-
-    h2 {
-        margin: 0;
-    }
-
-    small {
-        color: #888;
-    }
-
-    footer {
-        padding: 10px;
-    }
+button {
+    color: inherit;
+    background: none;
+    border: none;
 }
 
-.spinner {
-    margin: 100px auto;
-    width: 50px;
-    height: 30px;
-    text-align: center;
-    font-size: 10px;
-
-    > div {
-        background-color: #333;
-        height: 100%;
-        width: 6px;
-        display: inline-block;
-
-        -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
-        animation: stretchdelay 1.2s infinite ease-in-out;
-    }
-
-    .rect2 {
-        -webkit-animation-delay: -1.1s;
-        animation-delay: -1.1s;
-    }
-
-    .rect3 {
-        -webkit-animation-delay: -1.0s;
-        animation-delay: -1.0s;
-    }
-
-    .rect4 {
-        -webkit-animation-delay: -0.9s;
-        animation-delay: -0.9s;
-    }
-
-    .rect5 {
-        -webkit-animation-delay: -0.8s;
-        animation-delay: -0.8s;
-    }
-}
-
-@-webkit-keyframes stretchdelay {
-    0%, 40%, 100% { -webkit-transform: scaleY(0.4) }
-    20% { -webkit-transform: scaleY(1.0) }
-}
-
-@keyframes stretchdelay {
-    0%, 40%, 100% {
-        transform: scaleY(0.4);
-        -webkit-transform: scaleY(0.4);
-    }  20% {
-           transform: scaleY(1.0);
-           -webkit-transform: scaleY(1.0);
-       }
+a {
+    text-decoration: none;
+    color: #444;
 }
