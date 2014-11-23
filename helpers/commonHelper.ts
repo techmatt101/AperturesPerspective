@@ -10,6 +10,10 @@ function objectToUrlParameters (obj) {
     return str;
 }
 
+function parseBoolean(str : string) : Boolean {
+    return /true/i.test(str);
+}
+
 interface Array<T> {
     shuffle():  Array<T>;
 }
@@ -26,3 +30,13 @@ Array.prototype.shuffle = function () {
 
     return this;
 };
+
+function toggleClass(element : HTMLElement, class1 : string, class2 : string, value : Boolean) {
+    if(value) {
+        element.classList.remove(class1);
+        element.classList.add(class2);
+    } else {
+        element.classList.remove(class2);
+        element.classList.add(class1);
+    }
+}

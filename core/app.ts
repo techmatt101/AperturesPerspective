@@ -18,8 +18,10 @@ window.addEventListener('load', () => {
 
     var drawer = document.getElementById('drawer');
 
-    document.getElementById('menu').addEventListener('click', () => {
-        drawer.setAttribute('open', 'true');
+    var menu = document.getElementById('menu');
+    menu.addEventListener('click', () => {
+        var value = !parseBoolean(drawer.getAttribute('open'));
+        toggleClass(menu, 'md-menu', 'md-arrow-back', value);
+        drawer.setAttribute('open', value.toString());
     });
 });
-
