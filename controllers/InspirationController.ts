@@ -15,7 +15,7 @@ class InspirationController {
     constructor () {
         var self = this;
 
-        document.body.innerHTML = Views.inspiration({title: 'Inspiration'});
+        document.getElementById('content').innerHTML = Views.inspiration({title: 'Inspiration'});
 
         this.fetchPinnedCards();
 
