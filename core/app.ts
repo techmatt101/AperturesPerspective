@@ -30,10 +30,9 @@ window.addEventListener('load', () => {
         drawer.setAttribute('open', value.toString());
     });
 
-    document.body.addEventListener('click', (e : MouseEvent) => {
-        if(e.target instanceof HTMLAnchorElement) {
-            console.log(e);
-            e.preventDefault();
-        }
+    drawer.addEventListener('touchmove', (e : TouchEvent) => {
+        var touch : Touch = e.touches[0];
+        console.log(e);
+        drawer.style.transform = 'translateX(' + (touch.clientX - (<HTMLElement>e.target).offsetWidth) + 'px)';
     });
 });
