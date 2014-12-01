@@ -1,5 +1,5 @@
 enum PanoramioPhotoLocationImageSize {
-    ORIGINAL, MEDIUM, SMALL, THUMBNAIL, SQUARE, MINI_SQUARE
+    ORIGINAL, LARGE, MEDIUM, SMALL, THUMBNAIL, SQUARE, MINI_SQUARE
 }
 
 class PanoramioPhotoLocationRequester implements IRequester {
