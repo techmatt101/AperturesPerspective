@@ -1,3 +1,7 @@
+// Version 1.0.0 - Matthew Kemp
+// Released under the MIT License
+// https://gist.github.com/6b8531582ca2d63dfd2d.git
+
 class TaskCollection {
     name : string;
     active = 0;

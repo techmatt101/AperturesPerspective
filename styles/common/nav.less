@@ -1,5 +1,8 @@
+@color: #009688;
+@shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+
 .app-nav {
-    background: #00bcd4;
+    background: @color;
     color: #fff;
     padding: 5px;
     z-index: 100;
@@ -32,16 +35,15 @@
     padding: 5px;
     position: fixed;
     width: 250px;
-    left: -300px;
     top: 50px;
     bottom: 0;
     z-index: 80;
 
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-    transition: left 0.2s ease-out;
+    box-shadow: @shadow;
+    transition: transform 0.2s ease-out;
 
-    &[open="true"] {
-        left: 0;
+    &[open="false"] {
+        transform: translateX(-260px);
     }
 
     ul {
@@ -62,12 +64,12 @@
 }
 
 .tab-nav {
-    background: #00bcd4;
+    background: @color;
     color: #fff;
     overflow-x: scroll;
     white-space: nowrap;
 
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    box-shadow: @shadow;
 
     &::-webkit-scrollbar {
         display: none;

@@ -1,5 +1,9 @@
 class ShootPlannerController {
     constructor() {
-        document.getElementById('content').innerHTML = Views.shootPlanner({title: 'Inspiration'});
+        loadView('Shoot Planner', Views.shootPlanner());
+
+        document.getElementById('add').addEventListener('click', () => {
+            loadView('Shoot Plan', Views.shootPlan());
+        });
     }
 }
