@@ -1,10 +1,33 @@
 <form action="">
-    <input type="text" id="name" name="name" placeholder="Shoot Name">
-    <input type="date" id="date" name="date">
-    <select>
-        <option></option>
-    </select>
-    <textarea>
+    <div class="input">
+        <input type="text" id="name" name="name" required>
+        <label for="name">Shoot name</label>
+        <span class="input__bar"></span>
+    </div>
 
-    </textarea>
+    <div class="input">
+        <input type="date" id="date" name="date">
+        <label for="date">Shoot date</label>
+        <span class="input__bar"></span>
+    </div>
+
+    <br>
+
+    <label for="type">Shoot Type</label>
+    <select id="type" name="type" multiple>
+        <option value="night">Night</option>
+        <option value="sunrise">Sunrise</option>
+        <option value="sunset">Sunset</option>
+        <option value="landscape">Landscape</option>
+        <option value="portrait">Portrait</option>
+        <option value="action">Action</option>
+        <option value="indoors">Indoors</option>
+        <option value="outdoors">Outdoors</option>
+    </select>
+
+    <br>
+
+    <label for="notes">Notes</label>
+    <textarea id="notes" name="notes" placeholder="Notes"></textarea>
 </form>
+

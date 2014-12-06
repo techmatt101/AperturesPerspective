@@ -4,7 +4,8 @@
 @import 'common/spinner';
 
 * {
-  outline: none;
+    outline: none;
+    box-sizing: border-box;
 }
 
 body {
@@ -33,6 +34,87 @@ a {
     color: #fff;
     padding: 10px;
     border-radius: 50%;
-
     box-shadow: @shadow;
+}
+
+form {
+    background: #fff;
+    padding: 10px;
+
+    input, select, textarea {
+        display: block;
+    }
+}
+
+label {
+    font-size: 14px;
+    color: #5264AE;
+    font-weight: normal;
+}
+
+input {
+    font-size: 18px;
+    padding: 10px 10px 6px 5px;
+    display: block;
+    width: 300px;
+    border: none;
+    border-bottom: 1px solid #757575;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.input {
+    position: relative;
+    padding-top: 15px;
+    margin-bottom: 10px;
+
+    label {
+        color: #999;
+        font-size: 18px; //TODO: var up with input
+        position: absolute;
+        pointer-events: none;
+        left: 5px; //TODO: var up with input
+        bottom: 6px; //TODO: var up with input
+        transition: 0.2s ease all;
+    }
+
+    // active state
+    input:focus + label, input:valid + label { //TODO: GPU optimize?
+        bottom: 32px;
+        font-size: 14px;
+        color: #5264AE;
+    }
+
+    .input__bar {
+        position: relative;
+        display: block;
+        width: 300px;
+
+        &:before, &:after {
+            content: '';
+            height: 2px;
+            width: 0;
+            bottom: 1px;
+            position: absolute;
+            background: #5264AE;
+            transition: 0.2s ease all;
+        }
+
+        &:before {
+            left: 50%;
+        }
+
+        &:after {
+            right: 50%;
+        }
+    }
+
+    // active state
+    input:focus ~ .input__bar {
+        &:before, &:after {
+            width: 50%;
+        }
+    }
 }
