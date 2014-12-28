@@ -13,7 +13,7 @@ interface ITemplates {
     drawer : (content?) => string
 }
 
-var basePath = '/AperturesPerspective/';
+var basePath = '/AperturesPerspective/dist/';
 
 var controller, controllers = [];
 

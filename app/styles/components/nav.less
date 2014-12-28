@@ -1,14 +1,19 @@
-@color: #009688;
-@shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+@import (once) '../base/variables';
 
 .app-nav {
-    background: @color;
+    background: @brand-color;
     color: #fff;
     padding: 5px;
     z-index: 100;
 
     h1 {
         display: inline;
+    }
+
+    button {
+        color: inherit;
+        background: none;
+        border: none;
     }
 
     .icon {
@@ -39,7 +44,7 @@
     bottom: 0;
     z-index: 80;
 
-    box-shadow: @shadow;
+    box-shadow: @box-shadow;
     transition: transform 0.2s ease-out;
 
     &[open="false"] {
@@ -64,12 +69,12 @@
 }
 
 .tab-nav {
-    background: @color;
+    background: @brand-color;
     color: #fff;
     overflow-x: scroll;
     white-space: nowrap;
 
-    box-shadow: @shadow;
+    box-shadow: @box-shadow;
 
     &::-webkit-scrollbar {
         display: none;
