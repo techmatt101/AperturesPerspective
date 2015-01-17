@@ -1,4 +1,4 @@
-/// <reference path="IObserver.ts" />
+/// <reference path="../core/IObserver.ts" />
 
 class LazyLoader /*implements IObserver*/ {
     heightOffset = 120;
