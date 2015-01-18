@@ -30,22 +30,20 @@ window.addEventListener('load', () => {
     document.getElementById('menu').innerHTML = Templates.drawer();
 
     controller = new (Routes[getPath(window.location.href)] || Routes['/']);
+    controller.start();
 
     document.body.addEventListener('click', (e : MouseEvent) => {
         if (e.target instanceof HTMLAnchorElement) {
-            var link = getPath((<HTMLAnchorElement>e.target).href); // (<HTMLAnchorElement>e.target).href.replace(windowLink, ''); //TODO: optimize with splice?
-            console.log(link, Routes[link]);
-            controller = new Routes[link];
             e.preventDefault();
+            var link = (<any>e.target).attributes.href.value;
+            var newController = new Routes[link];
+            newController.start();
+            controller.finish();
+            controller = newController;
         }
     });
 });
 
 function getPath (href) {
     return href.slice(window.location.protocol.length + window.location.host.length + basePath.length + 1, href.length)
-}
-
-function loadView(title, html) {
-    new ActionBar(title);
-    document.getElementById('content').innerHTML = html;
 }

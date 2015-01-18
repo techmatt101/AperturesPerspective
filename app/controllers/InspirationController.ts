@@ -1,20 +1,13 @@
-class InspirationController {
+/// <reference path="../components/Activity"/>
+
+class InspirationController extends Activity {
 
     private _inspirationFeed = new InspirationFeed();
 
 
     constructor () {
+        super();
         var self = this;
-        loadView('Inspiration', Views.inspiration());
-
-        this._inspirationFeed.fetchSavedCards();
-
-        var cardsMarkup = '';
-        for (var i = 0; i < this._inspirationFeed.savedCards.length; i++) {
-            cardsMarkup += Templates.card(this._inspirationFeed.savedCards[i]);
-        }
-
-        document.getElementById('pinned').innerHTML = cardsMarkup;
 
         getLocationCoordinates((latitude, longitude) => {
             new TaskCollection('Feed Loader', () => {
@@ -39,5 +32,22 @@ class InspirationController {
                 })
                 .run();
         });
+    }
+
+    create () {
+        super.create();
+        new ActionBar('Inspiration');
+        this.setView(Views.inspiration());
+    }
+
+    load() {
+        this._inspirationFeed.fetchSavedCards();
+
+        var cardsMarkup = '';
+        for (var i = 0; i < this._inspirationFeed.savedCards.length; i++) {
+            cardsMarkup += Templates.card(this._inspirationFeed.savedCards[i]);
+        }
+
+        document.getElementById('pinned').innerHTML = cardsMarkup;
     }
 }

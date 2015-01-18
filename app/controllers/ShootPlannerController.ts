@@ -1,9 +1,12 @@
-class ShootPlannerController {
-    constructor() {
-        loadView('Shoot Planner', Views.shootPlanner());
+/// <reference path="../components/Activity"/>
+
+class ShootPlannerController extends Activity {
+    create() {
+        new ActionBar('Shoot Planner');
+        this.setView(Views.shootPlanner());
 
         document.getElementById('add').addEventListener('click', () => {
-            loadView('Shoot Plan', Views.shootPlan());
+            this.setView(Views.shootPlan());
         });
     }
 }
