@@ -14,7 +14,7 @@ gulp.task('default', ['clean'], function() {
 
 gulp.task('clean', del.bind(null, ['dist/**/*']));
 
-gulp.task('build', ['content', 'markup', 'templates', 'views', 'icons', 'images', /*'fonts', 'font-icons',*/ 'styles', 'scripts', 'access-file'], function() {
+gulp.task('build', ['content', 'markup', 'templateHelpers', 'templates', 'views', 'icons', 'images', /*'fonts', 'font-icons',*/ 'styles', 'scripts', 'access-file'], function() {
     if (isProduction) {
         gulp.start('size');
     }
@@ -49,15 +49,29 @@ gulp.task('markup', function() {
         .pipe(gulp.dest('dist'));
 });
 
+gulp.task('templateHelpers', function() {
+    return gulp.src('app/templateHelpers/*.js')
+        .pipe($.if(isProduction, $.uglify()))
+        .pipe($.concat('templateHelpers.js'))
+        .pipe(gulp.dest('dist'));
+});
+
 gulp.task('templates', function() {
     return gulp.src('app/templates/*.hbs')
         .pipe($.handlebars())
-        .pipe($.wrap('Handlebars.template(<%= contents %>)'))
+        .pipe($.wrap('Handlebars.template(<%= contents %>); Handlebars.registerPartial("<%= stripExt(file.relative) %>", Templates.<%= stripExt(file.relative) %>)', {}, {
+            imports: {
+                stripExt: function(fileName) {
+                    return $.util.replaceExtension(fileName, '');
+                }
+            }
+        }))
         .pipe($.declare({
             namespace: 'Templates',
             noRedeclare: true
         }))
         .pipe($.concat('templates.js'))
+        .pipe($.if(isProduction, $.uglify()))
         .pipe(gulp.dest('dist'));
 });
 

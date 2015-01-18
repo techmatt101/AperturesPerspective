@@ -1,0 +1,46 @@
+@import (once) '../base/variables';
+@import (once) '../helpers/unstyle';
+
+
+.tabs {
+    overflow-x: hidden;
+    height: 100%;
+
+    &__nav {
+        overflow-x: scroll;
+        white-space: nowrap;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            li {
+                display: inline-block;
+                text-align: center;
+                padding: 12px 20px;
+                border-bottom: 3px solid transparent;
+            }
+        }
+
+        &--active {
+            border-bottom-color: #ffff8d!important; //TODO: really wow!
+        }
+    }
+
+    &__content {
+        .unstyle-list();
+        transform: translateX(0%);
+        height: 100%;
+
+        &__pane {
+            float: left;
+            height: 100%;
+            overflow-y: scroll;
+        }
+    }
+}

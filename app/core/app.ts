@@ -26,8 +26,8 @@ var Routes = {
 
 
 window.addEventListener('load', () => {
-    document.getElementById('nav').innerHTML = Templates.nav({title: 'Apertures Perspective'});
-    document.getElementById('menu').innerHTML = Templates.drawer();
+    //document.getElementById('nav').innerHTML = Templates.nav({title: 'Apertures Perspective'});
+    //document.getElementById('menu').innerHTML = Templates.drawer();
 
     controller = new (Routes[getPath(window.location.href)] || Routes['/']);
     controller.start();

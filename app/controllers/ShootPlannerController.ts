@@ -2,7 +2,7 @@
 
 class ShootPlannerController extends Activity {
     create() {
-        new ActionBar('Shoot Planner');
+        new ActionBar(this);
         this.setView(Views.shootPlanner());
 
         document.getElementById('add').addEventListener('click', () => {

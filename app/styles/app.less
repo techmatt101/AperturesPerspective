@@ -1,16 +1,29 @@
 @import "base/variables";
 @import "base/base";
 @import "base/core";
+@import "base/form";
 @import "base/layout";
 
 @import 'fonts/material-design-iconic-font';
 
+@import "components/app";
 @import "components/buttons";
-@import "components/navigation";
+@import "components/actionBar";
+@import "components/drawer";
+@import "components/tabs";
 @import 'components/card';
-@import 'components/nav';
 @import 'components/spinner';
 
 .body {
     padding: 10px;
+}
+
+.activity {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: @body-bg;
+    z-index: 1000;
 }

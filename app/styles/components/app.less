@@ -1,0 +1,15 @@
+@import (once) '../base/variables';
+
+.app {
+    &__header {
+        background: @brand-color;
+        box-shadow: @box-shadow;
+        color: @white;
+
+        &--scroll {
+            z-index: 100;
+            width: 100%;
+            position: absolute;
+        }
+    }
+}

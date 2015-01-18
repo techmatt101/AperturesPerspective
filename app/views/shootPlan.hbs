@@ -1,3 +1,9 @@
+<header class="app__header">
+    {{#actionBar title="Shoot Details"}}
+        <button class="icon md-save"></button>
+    {{/actionBar}}
+</header>
+
 <form action="">
     <div class="input">
         <input type="text" id="name" name="name" required>
@@ -10,6 +16,11 @@
         <label for="date">Shoot date</label>
         <span class="input__bar"></span>
     </div>
+
+    <br>
+
+    <label for="color">Colour Code</label>
+    <input type="color" id="color" name="color">
 
     <br>
 
@@ -30,4 +41,3 @@
     <label for="notes">Notes</label>
     <textarea id="notes" name="notes" placeholder="Notes"></textarea>
 </form>
-
