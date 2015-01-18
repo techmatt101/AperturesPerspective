@@ -4,18 +4,13 @@
 // Definitions: https://github.com/borisyankov/DefinitelyTyped
 
 interface TouchEvent extends UIEvent {
-    touches: TouchList;
-    targetTouches: TouchList;
-    changedTouches: TouchList;
+    touches: Touch[];
+    targetTouches: Touch[];
+    changedTouches: Touch[];
     altKey: boolean;
     metaKey: boolean;
     ctrlKey: boolean;
     shiftKey: boolean;
-}
-
-interface TouchList {
-    length: number;
-    item: (index: number) => Touch;
 }
 
 interface Touch {

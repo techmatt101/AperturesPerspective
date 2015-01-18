@@ -42,6 +42,7 @@ class InspirationController extends Activity {
         this.setView(Views.inspiration({tabs: ['All', 'Tips', 'Photos', 'Places', 'Saved']}));
 
         new ActionBar(this);
+        new Tabs(this);
     }
 
     load() {
