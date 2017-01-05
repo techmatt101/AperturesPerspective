@@ -12,18 +12,20 @@ class PanoramioPhotoLocationRequester implements IRequester {
 
 
     request (callback) {
-        var options = {
-            set: 'public', // public (popular photos), full (all photos), user ID number
-            size: PanoramioPhotoLocationImageSize[this.imageSize].toLowerCase(),
-            from: this.startFrom, // max of 100
-            to: this.startFrom + this.numberOf,
-            minx: this.longitude - this.radius,
-            miny: this.latitude - this.radius,
-            maxx: this.longitude + this.radius,
-            maxy: this.latitude + this.radius,
-            mapfilter: true // filter out photos of the same location
-        };
-
-        JSONP.get('http://www.panoramio.com/map/get_panoramas.php', options, callback);
+        JSONP({
+            url: 'http://www.panoramio.com/map/get_panoramas.php',
+            data: {
+                set: 'public', // public (popular photos), full (all photos), user ID number
+                size: PanoramioPhotoLocationImageSize[this.imageSize].toLowerCase(),
+                from: this.startFrom, // max of 100
+                to: this.startFrom + this.numberOf,
+                minx: this.longitude - this.radius,
+                miny: this.latitude - this.radius,
+                maxx: this.longitude + this.radius,
+                maxy: this.latitude + this.radius,
+                mapfilter: true // filter out photos of the same location
+            },
+            success: callback
+        });
     }
 }

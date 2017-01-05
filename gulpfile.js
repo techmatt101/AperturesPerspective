@@ -14,7 +14,7 @@ gulp.task('default', ['clean'], function() {
 
 gulp.task('clean', del.bind(null, ['dist/**/*']));
 
--gulp.task('build', ['content', 'markup', 'templateHelpers', 'templates', 'views', 'icons', 'images', /*'fonts', 'font-icons',*/ 'styles', 'jsLibs', 'scripts', 'access-file'], function() {
+-gulp.task('build', ['content', 'markup', 'templateHelpers', 'templates', 'views', 'icons', 'images', /*'fonts', 'font-icons',*/ 'styles', 'jsLibs', 'scripts'], function() {
     if (isProduction) {
         gulp.start('size');
     }
@@ -60,7 +60,9 @@ gulp.task('templateHelpers', function() {
 
 gulp.task('templates', function() {
     return gulp.src('app/templates/*.hbs')
-        .pipe($.handlebars())
+        .pipe($.handlebars({
+            handlebars: require('handlebars')
+        }))
         .pipe($.wrap('Handlebars.template(<%= contents %>); Handlebars.registerPartial("<%= stripExt(file.relative) %>", Templates.<%= stripExt(file.relative) %>)', {}, {
             imports: {
                 stripExt: function(fileName) {
@@ -79,7 +81,9 @@ gulp.task('templates', function() {
 
 gulp.task('views', function() {
     return gulp.src('app/views/*.hbs')
-        .pipe($.handlebars())
+        .pipe($.handlebars({
+            handlebars: require('handlebars')
+        }))
         .pipe($.wrap('Handlebars.template(<%= contents %>)'))
         .pipe($.declare({
             namespace: 'Views',
@@ -128,11 +132,9 @@ gulp.task('images', function() {
 //});
 
 gulp.task('styles', /*['markup'],*/ function() {
-    var bowerResolve = require('less-plugin-bower-resolve');
-
     return gulp.src('app/styles/*.less')
         .pipe($.if(isDebug, $.sourcemaps.init()))
-        .pipe($.less({ plugins: [bowerResolve], lint: isDebug }))
+        .pipe($.less({ lint: isDebug }))
         .pipe($.autoprefixer())
         .pipe($.if(isDebug, $.sourcemaps.write()))
         .pipe($.if(isProduction, $.groupCssMediaQueries())) //no support for source maps
@@ -155,16 +157,10 @@ gulp.task('scripts', function() {
 
 gulp.task('jsLibs', function() {
     return gulp.src([
-        'bower_components/handlebars/handlebars.runtime.js',
-        'bower_components/qwest/qwest.min.js',
-        'bower_components/jsonp/jsonp.js'
+        'node_modules/handlebars/dist/handlebars.runtime.js',
+        'node_modules/browser-jsonp/lib/jsonp.js'
     ])
         .pipe($.concat('libs.js'))
         .pipe($.if(isProduction, $.uglify()))
         .pipe(gulp.dest('dist/scripts'));
-});
-
-gulp.task('access-file', function() {
-    return gulp.src('bower_components/apache-server-configs/dist/.htaccess')
-        .pipe(gulp.dest('dist'));
 });
