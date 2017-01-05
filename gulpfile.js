@@ -142,10 +142,9 @@ gulp.task('scripts', function() {
     return gulp.src('app/**/*.ts')
         .pipe($.if(isDebug, $.sourcemaps.init()))
         .pipe($.typescript({
-            sortOutput: true,
+            outFile: 'app.js',
             target: 'ES5'
         }))
-        .pipe($.concat('app.js'))
         .pipe($.if(isProduction, $.uglify()))
         .pipe($.if(isDebug, $.sourcemaps.write()))
         .pipe(gulp.dest('dist/scripts'));
