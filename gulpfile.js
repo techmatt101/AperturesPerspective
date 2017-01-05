@@ -1,7 +1,6 @@
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var del = require('del');
-var glob = require('glob');
 
 var isProduction = ($.util.env.dev || $.util.env.debug ? false : true);
 var isDebug = !isProduction;
@@ -14,7 +13,7 @@ gulp.task('default', ['clean'], function() {
 
 gulp.task('clean', del.bind(null, ['dist/**/*']));
 
--gulp.task('build', ['content', 'markup', 'templateHelpers', 'templates', 'views', 'icons', 'images', /*'fonts', 'font-icons',*/ 'styles', 'jsLibs', 'scripts'], function() {
+-gulp.task('build', ['content', 'markup', 'templateHelpers', 'templates', 'views', 'icons', 'images', 'styles', 'jsLibs', 'scripts'], function() {
     if (isProduction) {
         gulp.start('size');
     }
@@ -33,13 +32,6 @@ gulp.task('watch', function() {
 
 //===================================================//
 
-/* TODO:
- - Responsive Images
- - WebP Images
- - Favicons
- - SVG optimize
- */
-
 gulp.task('content', function() {
     return gulp.src('app/content/**/*.*')
         .pipe(gulp.dest('dist/content'));
@@ -47,7 +39,7 @@ gulp.task('content', function() {
 
 gulp.task('markup', function() {
     return gulp.src('app/*.html')
-        .pipe($.if(isProduction, $.minifyHtml()))
+        .pipe($.if(isProduction, $.htmlmin()))
         .pipe(gulp.dest('dist'));
 });
 
@@ -107,39 +99,17 @@ gulp.task('images', function() {
             quality: 0.8,
             imageMagick: true
         }))
-        //.pipe($.rename({ suffix: "-x2" }))
         .pipe(gulp.dest('dist/images'));
 });
 
-//gulp.task('fonts', function() {
-//    return gulp.src('app/fonts/**/*.{eot,svg,ttf,woff}')
-//        .pipe($.flatten())
-//        .pipe(gulp.dest('dist/fonts'));
-//});
-//
-//gulp.task('font-icons', function() {
-//    return gulp.src('app/font-icons/*.svg')
-//        .pipe($.iconfontCss({
-//            fontName: 'font-icons',
-//            targetPath: '../styles/font-icons.css',
-//            fontPath: '../fonts/'
-//        }))
-//        .pipe($.iconfont({
-//            fontName: 'font-icons',
-//            appendCodepoints: true
-//        }))
-//        .pipe(gulp.dest('dist/fonts'));
-//});
-
-gulp.task('styles', /*['markup'],*/ function() {
+gulp.task('styles', function() {
     return gulp.src('app/styles/*.less')
         .pipe($.if(isDebug, $.sourcemaps.init()))
         .pipe($.less({ lint: isDebug }))
         .pipe($.autoprefixer())
         .pipe($.if(isDebug, $.sourcemaps.write()))
         .pipe($.if(isProduction, $.groupCssMediaQueries())) //no support for source maps
-        //.pipe($.if(isProduction, $.uncss({ html: glob.sync('dist/*.html'), ignore: ['.update-browser'] }))) //no support for source maps
-        .pipe($.if(isProduction, $.cleancss({ advanced: true })))
+        .pipe($.if(isProduction, $.cleanCss({ advanced: true })))
         .pipe(gulp.dest('dist/styles'));
 });
 
